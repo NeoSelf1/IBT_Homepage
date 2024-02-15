@@ -27,17 +27,15 @@ export const LeftMotionComponent: React.FC<MotionComponentProps> = ({ component:
 
   return (
     <>
-      <div className="overflow-hidden">
-        <Component
-          viewport={{ root: scrollRef }}
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={Variants}
-          {...props}
-        >
-          {children}
-        </Component>
-      </div>
+      <Component
+        viewport={{ root: scrollRef }}
+        initial="offscreen"
+        whileInView="onscreen"
+        variants={Variants}
+        {...props}
+      >
+        {children}
+      </Component>
     </>
   )
 }

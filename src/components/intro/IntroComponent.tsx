@@ -4,9 +4,6 @@ import ContentBlock from './IntroContentBlock.client'
 import IntroComponent5 from './IntroComponent5.client'
 import IntroComponent6 from './IntroComponent6'
 import IntroComponent7 from './IntroComponent7'
-import { useAnimation } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { useEffect } from 'react'
 
 export default function IntroComponent() {
   return (
@@ -16,16 +13,13 @@ export default function IntroComponent() {
         <ContentBlock key={index} title={content.title} text={content.text} background={content.background} />
       ))}
 
-      {/* 4th Logo */}
-      {/* <LogoComponent /> */}
-
-      {/* 5th */}
+      {/* 5 */}
       <IntroComponent5 />
 
-      {/* 6th */}
+      {/* 6 */}
       <IntroComponent6 />
 
-      {/* 7th */}
+      {/* 7 */}
       <IntroComponent7 />
     </>
   )

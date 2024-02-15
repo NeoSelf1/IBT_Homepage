@@ -1,8 +1,6 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { IContentBlockProps } from './IntroComponent.types'
-import { useInView } from 'react-intersection-observer'
 import { useScrollAnimation } from '../commons/UseScrollAnimation'
 
 export default function ContentBlock(props: IContentBlockProps) {

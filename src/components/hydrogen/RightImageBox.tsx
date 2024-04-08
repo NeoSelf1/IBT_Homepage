@@ -9,8 +9,23 @@ import { MdEnergySavingsLeaf } from 'react-icons/md'
 import { isEnglishState } from '@/context/recoil-context'
 import { useRecoilValue } from 'recoil'
 
-export default function SystemBox() {
+interface BoxProps {
+  img: string
+  title: string[]
+  subTitle: string[]
+  text1: string[]
+  link1: string
+  text2: string[]
+  link2: string
+  explain_ko: string
+  explain_en: string
+}
+
+export default function RightImageBox(props: BoxProps) {
   const isEnglish = useRecoilValue(isEnglishState)
+
+  const { img, title, subTitle, text1, link1, text2, link2, explain_ko, explain_en } = props
+
   let boxLeftVariants = {}
   if (typeof window !== 'undefined') {
     const isMobile = window.innerWidth < 768
@@ -50,13 +65,17 @@ export default function SystemBox() {
             {/* 컨텐츠 상단 한줄 */}
             <div className="flex justify-between items-center">
               <div>
-                <div className="text-black text-5xl lg:text-4xl font-bold lg:font-semibold mb-1.5 lg:mt-0 mt-3">
-                  SYSTEM
+                <div
+                  className={`text-black lg:text-2xl font-semibold mb-1.5 lg:mt-0 mt-3 lg:whitespace-pre-wrap ${
+                    isEnglish ? 'lg:text-xl text-3xl mr-1' : 'lg:text-2xl text-4xl'
+                  } `}
+                >
+                  {title[isEnglish]}
                 </div>
-                <div className="text-gray-600 text-xl lg:text-sm font-bold">{isEnglish ? 'system' : '시스템'}</div>
+                <div className="text-gray-600 text-xl lg:text-sm font-bold">{subTitle[isEnglish]}</div>
               </div>
               {/* 화살표 버튼의 경우 group hover시에만 나타나도록 hidden 설정 */}
-              <Link prefetch href="/battery/batteryDetail/power">
+              <Link prefetch href={link1}>
                 <motion.button
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -71,20 +90,20 @@ export default function SystemBox() {
             </div>
             {/* 컨텐츠 본문 */}
             <div className="mt-8">
-              {/* 기본은 보이게, group hover시 hidden
+              {/* 기본은 보이게, group hover시 hidden */}
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{
                   duration: 0.3,
                 }}
-                className="text-2xl lg:text-sm font-medium text-gray-900 hidden lg:block group-hover:hidden"
+                className="text-2xl lg:text-sm font-medium text-gray-900 hidden lg:block group-hover:hidden whitespace-pre-line"
               >
-                {isEnglish ? `english` : 'korean'}
-              </motion.p> */}
+                {isEnglish ? explain_en : explain_ko}
+              </motion.p>
               {/* 기본은 hidden, group hover시에 나타나는 중분류 버튼 */}
-              <div className="flex flex-row lg:flex-col gap-6 text-gray-600 lg:text-lg text-2xl font-medium lg:font-bold">
-                <Link prefetch className="w-full" href="/hydrogen/hydrogenDetail/system">
+              <div className="flex lg:hidden group-hover:flex flex-row lg:flex-col gap-6 text-gray-600 lg:text-lg text-2xl font-medium lg:font-bold">
+                <Link prefetch className="w-full" href={link1}>
                   <motion.button
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -94,7 +113,7 @@ export default function SystemBox() {
                     className="w-full"
                   >
                     <div className="flex lg:h-auto bg-white text-lg hover:bg-gray-300 rounded-2xl lg:bg-inherit flex-col-reverse lg:flex-row justify-between items-center p-8 lg:p-4 shadow-sm lg:shadow-none">
-                      {isEnglish ? 'Progress Project' : '진행 프로젝트'}
+                      {text1[isEnglish]}
                       <AiFillThunderbolt className="flex lg:hidden mb-6 opacity-50" size={32} />
                       <Image
                         className="hidden lg:flex"
@@ -106,7 +125,7 @@ export default function SystemBox() {
                     </div>
                   </motion.button>
                 </Link>
-                <Link prefetch className="w-full" href="/hydrogen/hydrogenDetail/system">
+                <Link prefetch className="w-full" href={link2}>
                   <motion.button
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -116,7 +135,7 @@ export default function SystemBox() {
                     className="w-full"
                   >
                     <div className="flex lg:h-auto bg-white hover:bg-gray-300 rounded-2xl lg:bg-inherit flex-col-reverse lg:flex-row justify-between items-center p-8 lg:p-4 shadow-sm lg:shadow-none text-lg">
-                      {isEnglish ? 'Installation' : '설치'}
+                      {text2[isEnglish]}
                       <MdEnergySavingsLeaf className="flex lg:hidden mb-6 opacity-50" size={32} />
                       <Image
                         className="hidden lg:flex"
@@ -134,7 +153,7 @@ export default function SystemBox() {
         </div>
         {/* 배터리 이미지 영역 */}
         <div className="lg:relative lg:flex lg:w-3/5 lg:justify-center lg:items-center hidden">
-          <Image alt="Lithium" src={'/image/hydrogen/system.png'} fill className="rounded-r-lg object-cover" />
+          <Image alt="Lithium" src={img} fill className="rounded-r-lg object-cover" />
         </div>
       </motion.div>
     </>

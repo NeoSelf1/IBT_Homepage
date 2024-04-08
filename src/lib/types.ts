@@ -1,3 +1,16 @@
+import { Dispatch, SetStateAction } from 'react'
+
+export type PaginationProps = {
+  posts: NewsProps[]
+}
+
+export interface IPageNation {
+  posts: NewsProps[]
+  currentPage: number
+  setCurrentPage: Dispatch<SetStateAction<number>>
+  totalPageCount: number
+}
+
 export type NewsProps = {
   _id: string
   title: string
@@ -62,4 +75,4 @@ export type ButtonProps = {
   func?: any
   isLoading?: boolean
 }
-export type PageType = 'hydrogen' | 'battery'
+export type PageType = 'hydrogen' | 'battery' | 'news'

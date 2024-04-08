@@ -16,7 +16,7 @@ export const links_admin = [
     path: '/admin/catelogs',
   },
   {
-    name: '지우장학회 PDF',
+    name: '중양장형태 PDF',
     path: '/admin/esg-pdf',
   },
 ] as const
@@ -40,7 +40,7 @@ export const postData_admin = [
   {
     id: 2,
     postType: 'esg-pdf',
-    title: '지우장학회 활용실적명세',
+    title: '중양장형태 활용실적명세',
     name: 'PDF',
     href: '/admin/esg-pdf/add',
   },
@@ -75,14 +75,38 @@ export const batteriesData_admin = [
 export const hydrogensData_admin = [
   {
     id: 0,
-    postType: 'Project',
-    title: '프로젝트',
+    postType: 'waterSys',
+    title: '수전해 시스템',
     name: '적용제품',
   },
   {
     id: 1,
-    postType: 'System',
-    title: '시스템',
+    postType: 'waterSer',
+    title: '수전해 서비스',
+    name: '적용제품',
+  },
+  {
+    id: 2,
+    postType: 'fuelCellSys',
+    title: '연료전지 시스템',
+    name: '적용제품',
+  },
+  {
+    id: 3,
+    postType: 'hydrogenSer',
+    title: '수소발전 서비스',
+    name: '적용제품',
+  },
+  {
+    id: 4,
+    postType: 'energyFac',
+    title: '에너지자립 설비',
+    name: '적용제품',
+  },
+  {
+    id: 5,
+    postType: 'energySer',
+    title: '에너지 서비스',
     name: '적용제품',
   },
 ]
@@ -1219,37 +1243,6 @@ export const batteryList = [
   },
 ]
 
-export const hydrogenList = [
-  {
-    title: ['123', 'Defense Ni-Cd'],
-    explain: [
-      'IBT는 운용 안정성이 우수하고 혹한기 및 혹서기 등 열악한 환경에서도\n안전하게 사용할 수 있는 고출력의 고효율의 방산 전문 Ni-cd 배터리를\n신뢰를 바탕으로 공급해왔습니다.',
-      'We have supplied high-power, high-efficiency, defense-specialized Ni-Cd batteries based on trust that have excellent operational stability and can be safely used in poor environments such as cold and hot weather.',
-    ],
-  },
-  {
-    title: ['Hydro Project', 'Hydro Project'],
-    explain: [
-      '국내외 수소 영역 대기업 및 외국 기업과\n수소 프로젝트를 진행하고 있습니다.',
-      'We provide a variety of products with high energy density and high output characteristics according to customer needs\nIt has excellent price competitiveness and strong durability against vibration and shock.',
-    ],
-  },
-  {
-    title: ['동력용 Lithium', 'Power Lithium'],
-    explain: [
-      '고 에너지 밀도 - 축전지, 니켈-카드뮴에 비하여 높은 에너지밀도로 부피가 작고 중량이 가볍습니다.\n높은 기전력 - 리튬인산철전지의 기전력은 3.2V로 높은 전력 요구 시 구성 수량 감소 효과가 나타납니다.\n관리용이 - Memory effect가 없어 완전히 방전시키지 않은 상태에서도 충전이 가능합니다.\n낮은 자가 방전율 - 5%/월 미만의 자가방전율로 자가 방전에 의한 전력 손실이 매우 적습니다.',
-      'High Energy Density - High energy density compared to storage batteries and nickel-cadmium, it is smaller in volume and lighter in weight.\nHigh electromotive force - The electromotive force of a lithium iron phosphate battery is 3.2V, which reduces the number of components when high power is required.\nEasy to manage - There is no Memory effect, so it can be charged even when it is not completely discharged.\nLow self-discharge rate - less than 5%/month self-discharge rate with very little power loss due to self-discharge.',
-    ],
-  },
-  {
-    title: ['에너지저장용 Lithium', 'Energy Storage Lithium'],
-    explain: [
-      '고 에너지 밀도 - 축전지, 니켈-카드뮴에 비하여 높은 에너지밀도로 부피가 작고 중량이 가볍습니다.\n높은 기전력 - 리튬인산철전지의 기전력은 3.2V로 높은 전력 요구 시 구성 수량 감소 효과가 나타납니다.\n관리용이 - Memory effect가 없어 완전히 방전시키지 않은 상태에서도 충전이 가능합니다.\n낮은 자가 방전율 - 5%/월 미만의 자가방전율로 자가 방전에 의한 전력 손실이 매우 적습니다.',
-      'High Energy Density - High energy density compared to storage batteries and nickel-cadmium, it is smaller in volume and lighter in weight.\nHigh electromotive force - The electromotive force of a lithium iron phosphate battery is 3.2V, which reduces the number of components when high power is required.\nEasy to manage - There is no Memory effect, so it can be charged even when it is not completely discharged.\nLow self-discharge rate - less than 5%/month self-discharge rate with very little power loss due to self-discharge.',
-    ],
-  },
-]
-
 export const hydrogenIntroData = {
   title: ['원스톱 서비스', 'a one-stop service'],
   subTitle: [
@@ -1260,32 +1253,40 @@ export const hydrogenIntroData = {
 
 export const hydrogenListData = [
   {
-    title: ['진행중인 프로젝트', 'Project'],
+    title: ['수전해 시스템', 'Water Electrolysis System'],
     explain: [
-      [
-        'IBT는 운용 안정성이 우수하고 혹한기 및 혹서기 등 열악한 환경에서도',
-        '안전하게 사용할 수 있는 고출력의 고효율의 방산 전문 Ni-Cd 배터리를',
-        '신뢰를 바탕으로 공급해왔습니다.',
-      ],
-      [
-        'We have supplied high-power, high-efficiency, defense-specialized Ni-Cd batteries based on trust that have excellent operational stability',
-        'and can be safely used in poor environments such as cold and hot weather.',
-      ],
+      ['국내외 수소 영역 대기업 및 외국 기업과', '수전해 프로젝트를 진행하고 있습니다.'],
+      ['We are conducting water electrolysis projects with large domestic and foreign companies in the hydrogen area.'],
     ],
   },
   {
-    title: ['시스템', 'System'],
+    title: ['수전해 서비스', 'Water Electrolysis Services'],
     explain: [
-      [
-        'IBT는 운용 안정성이 우수하고 혹한기 및 혹서기 등 열악한 환경에서도',
-        '안전하게 사용할 수 있는 고출력의 고효율의 방산 전문 Ni-Cd 배터리를',
-        '신뢰를 바탕으로 공급해왔습니다.',
-      ],
-      [
-        'We have supplied high-power, high-efficiency, defense-specialized Ni-Cd batteries based on trust that have excellent operational stability',
-        'and can be safely used in poor environments such as cold and hot weather.',
-      ],
+      ['국내외 수소 영역 대기업 및 외국 기업과', '수전해 프로젝트를 진행하고 있습니다.'],
+      ['We are conducting water electrolysis projects with large domestic and foreign companies in the hydrogen area.'],
     ],
+  },
+  {
+    title: ['연료전지 시스템', 'Fuel Cell System'],
+    explain: [
+      ['국내외 수소 영역 대기업 및 외국 기업과', '수소 프로젝트를 진행하고 있습니다.'],
+      ['We are conducting hydrogen projects with large domestic and foreign companies in the hydrogen field'],
+    ],
+  },
+  {
+    title: ['연료전지 서비스', 'Fuel Cell Services'],
+    explain: [
+      ['국내외 수소 영역 대기업 및 외국 기업과', '수소 프로젝트를 진행하고 있습니다.'],
+      ['We are conducting hydrogen projects with large domestic and foreign companies in the hydrogen field'],
+    ],
+  },
+  {
+    title: ['에너지자립시스템 설비', 'Energy Independence System Facility'],
+    explain: [['통합 제어 시스템'], ['Integrated Control System']],
+  },
+  {
+    title: ['에너지자립시스템 서비스', 'Energy Independence System Services'],
+    explain: [['통합 제어 시스템'], ['Integrated Control System']],
   },
 ]
 
@@ -1308,6 +1309,10 @@ export const headerData = [
   },
   {
     title: ['HYDROGEN'],
+    subTitle1: ['수전해 발전', 'Electrolysis'],
+    subTitle2: ['수소 발전', 'Hydrogen'],
+    subTitle3: ['에너지 자립', 'Independence'],
+    subTitle4: ['기타', 'Others'],
   },
   {
     title: ['고객지원', 'CUSTOMER'],
@@ -1318,5 +1323,12 @@ export const headerData = [
   {
     title: ['ESG'],
     subTitle1: ['IBT ESG'],
+  },
+]
+
+export const TempHydrogenData = [
+  {
+    // hydrogen 임시 데이터
+    src: ['/image/hydrogen/hydrogen_intro.png', '/image/hydrogen/hydrogen-en.png'],
   },
 ]
